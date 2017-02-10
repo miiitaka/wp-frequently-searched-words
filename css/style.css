@@ -1,0 +1,25 @@
+.fsw-list-table tr th:nth-child(1) {
+	width: 50px;
+}
+
+.fsw-list-table tr th:nth-child(2) {
+	width: 200px;
+}
+
+.fsw-list-table tr th:nth-child(3) {
+	width: 90px;
+}
+
+.fsw-list-table tr td:nth-child(3) {
+	text-align: right;
+}
+
+.fsw-list-table tr td:nth-child(4) {
+	display: block;
+	position: relative;
+}
+
+.fsw-list-table tr td:nth-child(4) span {
+	background: #0085ba;
+	position: absolute;
+}

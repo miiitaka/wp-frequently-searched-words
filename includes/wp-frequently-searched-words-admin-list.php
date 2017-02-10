@@ -26,7 +26,7 @@ class Frequently_Searched_Words_List {
 	public function __construct ( $text_domain ) {
 		$this->text_domain = $text_domain;
 
-		$db = new Frequently_Searched_Words_Admin_Db();
+		$db   = new Frequently_Searched_Words_Admin_Db();
 		$mode = "";
 
 		if ( isset( $_GET['mode'] ) && $_GET['mode'] === 'delete' ) {
@@ -60,11 +60,11 @@ class Frequently_Searched_Words_List {
 		}
 
 		$html  = '<hr>';
-		$html .= '<table class="wp-list-table widefat fixed striped posts">';
+		$html .= '<table class="wp-list-table widefat fixed striped posts fsw-list-table">';
 		$html .= '<tr>';
+		$html .= '<th scope="row">&nbsp;</th>';
 		$html .= '<th scope="row">' . esc_html__( 'Search Word',  $this->text_domain ) . '</th>';
 		$html .= '<th scope="row">' . esc_html__( 'Search Count', $this->text_domain ) . '</th>';
-		$html .= '<th scope="row">&nbsp;</th>';
 		$html .= '<th scope="row">&nbsp;</th>';
 		$html .= '</tr>';
 		echo $html;
@@ -73,17 +73,25 @@ class Frequently_Searched_Words_List {
 		$results = $db->get_list_options();
 
 		if ( $results ) {
+			$count_array = $db->get_search_count_sum();
 			foreach ( $results as $row ) {
 				$html  = '';
 				$html .= '<tr>';
-				$html .= '<td>' . esc_html( $row->search_word )  . '</td>';
-				$html .= '<td>' . esc_html( $row->search_count ) . '</td>';
 				$html .= '<td>';
 				$html .= '<a href="' . $self_url . '&mode=delete&frequently_searched_words_id=' . esc_html( $row->id ) . '">';
 				$html .= esc_html__( 'Delete', $this->text_domain );
 				$html .= '</a>';
 				$html .= '</td>';
-				$html .= '<td>&nbsp;</td>';
+				$html .= '<td>' . esc_html( $row->search_word )  . '</td>';
+				$html .= '<td>' . esc_html( $row->search_count ) . '</td>';
+
+				if ( isset( $count_array['SCOUNT'] ) && (int) $count_array['SCOUNT'] > 0 ) {
+					$width = ( (int) $row->search_count / $count_array['SCOUNT'] ) * 100;
+				} else {
+					$width = 0;
+				}
+
+				$html .= '<td><span style="width: ' . $width . '%;">&nbsp;</span></td>';
 				$html .= '</tr>';
 				echo $html;
 			}
