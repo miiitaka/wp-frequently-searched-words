@@ -46,7 +46,8 @@ class Frequently_Searched_Words_ShortCode {
 				$html = "<ul>";
 			}
 			foreach ( $results as $row ) {
-				$html .= '<li>' . esc_html( $row->search_word )  . '</li>';
+				$html .= '<li><a href="' . esc_url( home_url( '/' ) ) . '?s=' . esc_html( $row->search_word ) . '">';
+				$html .= esc_html( $row->search_word ) . '</a></li>';
 			}
 			$html .= "</ul>";
 		}

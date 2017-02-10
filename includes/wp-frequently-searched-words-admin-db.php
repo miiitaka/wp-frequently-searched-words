@@ -72,6 +72,21 @@ class Frequently_Searched_Words_Admin_Db {
 	}
 
 	/**
+	 * Get Search Count SUM.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 * @return  array  $args
+	 */
+	public function get_search_count_sum () {
+		global $wpdb;
+
+		$prepared = "SELECT SUM(search_count) AS SCOUNT FROM " . $this->table_name;
+
+		return (array) $wpdb->get_row( $prepared );
+	}
+
+	/**
 	 * Get All Data.
 	 *
 	 * @vesion 1.0.0

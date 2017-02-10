@@ -50,6 +50,7 @@ class Frequently_Searched_Words {
 		add_shortcode( $this->text_domain, array( $this, 'short_code_init' ) );
 
 		if ( is_admin() ) {
+			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		} else {
 			add_action( 'pre_get_posts', array( $this, 'search_post_update' ) );
@@ -82,13 +83,23 @@ class Frequently_Searched_Words {
 	}
 
 	/**
+	 * admin init.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function admin_init () {
+		wp_register_style( 'wp-frequently-search-words-admin-style', plugins_url( 'css/style.css', __FILE__ ), array(), $this->version );
+	}
+
+	/**
 	 * Add Menu to the Admin Screen.
 	 *
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 */
 	public function admin_menu () {
-		add_menu_page(
+		$list_page = add_menu_page(
 			esc_html__( 'Frequently Searched Words', $this->text_domain ),
 			esc_html__( 'Search Words',              $this->text_domain ),
 			'manage_options',
@@ -96,6 +107,16 @@ class Frequently_Searched_Words {
 			array( $this, 'list_page_render' ),
 			'dashicons-search'
 		);
+		add_action( 'admin_print_styles-' . $list_page, array( $this, 'add_style' ) );
+	}
+
+	/**
+	 * CSS admin add.
+	 *
+	 * @since 1.0.0
+	 */
+	public function add_style () {
+		wp_enqueue_style( 'wp-frequently-search-words-admin-style' );
 	}
 
 	/**
