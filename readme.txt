@@ -23,7 +23,7 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 = Attributes that can be set for short code =
 
-* id : e.g) id="example"
+* id    : e.g) id="example"
 * class : e.g) class="example"
 * limit : e.g) limit="5" (default: 10)
 
