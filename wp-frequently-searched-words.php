@@ -48,6 +48,7 @@ class Frequently_Searched_Words {
 	public function __construct () {
 		register_activation_hook( __FILE__, array( $this, 'create_table' ) );
 		add_shortcode( $this->text_domain, array( $this, 'short_code_init' ) );
+		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
 		if ( is_admin() ) {
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -80,6 +81,16 @@ class Frequently_Searched_Words {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-frequently-search-words-admin-short-code.php' );
 		$obj = new Frequently_Searched_Words_ShortCode( $args );
 		return $obj->short_code_display( $args );
+	}
+
+	/**
+	 * i18n.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function plugins_loaded () {
+		load_plugin_textdomain( $this->text_domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
@@ -129,6 +140,7 @@ class Frequently_Searched_Words {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-frequently-searched-words-admin-list.php' );
 		new Frequently_Searched_Words_List( $this->text_domain );
 	}
+
 	/**
 	 * Search Post Update.
 	 *

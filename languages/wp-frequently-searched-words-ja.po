@@ -1,0 +1,61 @@
+# Copyright (C) 2017 Frequently Searched Words
+# This file is distributed under the same license as the Frequently Searched Words package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Frequently Searched Words 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-frequently-searched-words\n"
+"POT-Creation-Date: 2017-02-14 02:35:30+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/wp-frequently-searched-words-admin-list.php:55
+msgid "Frequently Searched Words List"
+msgstr "Frequently Searched Words List"
+
+#: includes/wp-frequently-searched-words-admin-list.php:66
+msgid "Search Word"
+msgstr "検索ワード"
+
+#: includes/wp-frequently-searched-words-admin-list.php:67
+msgid "Search Count"
+msgstr "検索カウント"
+
+#: includes/wp-frequently-searched-words-admin-list.php:82
+msgid "Delete"
+msgstr "削除"
+
+#: includes/wp-frequently-searched-words-admin-list.php:99
+msgid "Without registration."
+msgstr "登録されていません。"
+
+#. #-#-#-#-#  wp-frequently-searched-words.pot (Frequently Searched Words 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: wp-frequently-searched-words.php:114
+msgid "Frequently Searched Words"
+msgstr "Frequently Searched Words"
+
+#: wp-frequently-searched-words.php:115
+msgid "Search Words"
+msgstr "Search Words"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/miiitaka/wp-frequently-searched-words"
+msgstr "https://github.com/miiitaka/wp-frequently-searched-words"
+
+#. Description of the plugin/theme
+msgid ""
+"It is possible to register and display frequently searched words in site "
+"search."
+msgstr "サイト内検索で検索された単語を登録して表示することができます。"
+
+#. Author of the plugin/theme
+msgid "Kazuya Takami"
+msgstr "Kazuya Takami"
+
+#. Author URI of the plugin/theme
+msgid "https://www.terakoya.work/"
+msgstr "https://www.terakoya.work/"
