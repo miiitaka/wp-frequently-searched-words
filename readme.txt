@@ -41,7 +41,7 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 == Changelog ==
 
-= 1.0.0 (2017-02-21) =
+= 1.0.0 (2017-02-24) =
 * The first release.
 
 == Contact ==
