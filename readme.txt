@@ -35,10 +35,13 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 == Screenshots ==
 
+1. Save the word you searched in the site search and display it in a favorite place with a short code.
+
+2. You can see the number of words searched on the administration menu.
 
 == Changelog ==
 
-= 1.0.0 (2017-02-xx) =
+= 1.0.0 (2017-02-24) =
 * The first release.
 
 == Contact ==
