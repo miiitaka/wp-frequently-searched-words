@@ -144,7 +144,7 @@ class Frequently_Searched_Words {
 	/**
 	 * Search Post Update.
 	 *
-	 * @version 1.0.0
+	 * @version 1.0.1
 	 * @since   1.0.0
 	 * @param   WP_Query $query
 	 */
@@ -153,7 +153,7 @@ class Frequently_Searched_Words {
 			if ( $query->is_search ) {
 				$db = new Frequently_Searched_Words_Admin_Db();
 
-				$search_word = mb_convert_kana( get_search_query(), "s", "UTF-8" );
+				$search_word = mb_convert_kana( get_search_query(), "as", "UTF-8" );
 				$args        = explode( " ", $search_word );
 
 				foreach ( $args as $value ) {
