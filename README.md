@@ -25,5 +25,8 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 ## Changelog
 
+### 1.0.1 (2017-03-08)
+- Checked : WordPress version 4.7.3 operation check.
+
 ### 1.0.0 (2017-02-24)
 - The first release.

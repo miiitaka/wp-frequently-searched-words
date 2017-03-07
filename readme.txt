@@ -2,8 +2,8 @@
 Contributors: miiitaka
 Tags: search, shortcode
 Requires at least: 4.7.2
-Tested up to: 4.7.2
-Stable tag: 1.0.0
+Tested up to: 4.7.3
+Stable tag: 1.0.1
 
 It is possible to register and display frequently searched words in site search.
 
@@ -40,6 +40,9 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 2. You can see the number of words searched on the administration menu.
 
 == Changelog ==
+
+= 1.0.1 (2017-03-08) =
+* Checked : WordPress version 4.7.3 operation check.
 
 = 1.0.0 (2017-02-24) =
 * The first release.
