@@ -144,25 +144,29 @@ class Frequently_Searched_Words {
 	/**
 	 * Search Post Update.
 	 *
-	 * @version 1.0.1
+	 * @version 1.0.2
 	 * @since   1.0.0
 	 * @param   WP_Query $query
 	 */
 	public function search_post_update ( $query ) {
 		if ( $query->is_main_query() ) {
 			if ( $query->is_search ) {
-				$db = new Frequently_Searched_Words_Admin_Db();
-
 				$search_word = mb_convert_kana( get_search_query(), "as", "UTF-8" );
-				$args        = explode( " ", $search_word );
+				$search_word = trim( get_search_query() );
 
-				foreach ( $args as $value ) {
-					$result = $db->get_options( $value );
+				if ( !empty( $search_word ) ) {
+					$db = new Frequently_Searched_Words_Admin_Db();
 
-					if ( empty( $result ) ) {
-						$db->insert_options( $value );
-					} else {
-						$db->update_options( $result );
+					$args = explode( " ", $search_word );
+
+					foreach ( $args as $value ) {
+						$result = $db->get_options( $value );
+
+						if ( empty( $result ) ) {
+							$db->insert_options( $value );
+						} else {
+							$db->update_options( $result );
+						}
 					}
 				}
 			}
