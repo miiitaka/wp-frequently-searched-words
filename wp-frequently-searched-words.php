@@ -3,7 +3,7 @@
 Plugin Name: Frequently Searched Words
 Plugin URI: https://github.com/miiitaka/wp-frequently-searched-words
 Description: It is possible to register and display frequently searched words in site search.
-Version: 1.0.1
+Version: 1.0.2
 Author: Kazuya Takami
 Author URI: https://www.terakoya.work/
 License: GPLv2 or later
@@ -18,7 +18,7 @@ new Frequently_Searched_Words();
  * Frequently Searched Words Basic Class
  *
  * @author  Kazuya Takami
- * @version 1.0.1
+ * @version 1.0.2
  * @since   1.0.0
  */
 class Frequently_Searched_Words {
@@ -34,10 +34,10 @@ class Frequently_Searched_Words {
 	/**
 	 * Variable definition: plugin version
 	 *
-	 * @version 1.0.1
+	 * @version 1.0.2
 	 * @since   1.0.0
 	 */
-	private $version = '1.0.1';
+	private $version = '1.0.2';
 
 	/**
 	 * Constructor Define.
@@ -144,25 +144,29 @@ class Frequently_Searched_Words {
 	/**
 	 * Search Post Update.
 	 *
-	 * @version 1.0.1
+	 * @version 1.0.2
 	 * @since   1.0.0
 	 * @param   WP_Query $query
 	 */
 	public function search_post_update ( $query ) {
 		if ( $query->is_main_query() ) {
 			if ( $query->is_search ) {
-				$db = new Frequently_Searched_Words_Admin_Db();
-
 				$search_word = mb_convert_kana( get_search_query(), "as", "UTF-8" );
-				$args        = explode( " ", $search_word );
+				$search_word = trim( get_search_query() );
 
-				foreach ( $args as $value ) {
-					$result = $db->get_options( $value );
+				if ( !empty( $search_word ) ) {
+					$db = new Frequently_Searched_Words_Admin_Db();
 
-					if ( empty( $result ) ) {
-						$db->insert_options( $value );
-					} else {
-						$db->update_options( $result );
+					$args = explode( " ", $search_word );
+
+					foreach ( $args as $value ) {
+						$result = $db->get_options( $value );
+
+						if ( empty( $result ) ) {
+							$db->insert_options( $value );
+						} else {
+							$db->update_options( $result );
+						}
 					}
 				}
 			}
