@@ -25,9 +25,12 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 ## Changelog
 
+### 1.0.3 (2017-05-02)
+- Fixed : Half width conversion omission.
+
 ### 1.0.2 (2017-04-24)
-* Checked : WordPress version 4.7.4 operation check.
-* Fixed : Exclude whitespace.
+- Checked : WordPress version 4.7.4 operation check.
+- Fixed : Exclude whitespace.
 
 ### 1.0.1 (2017-03-08)
 - Checked : WordPress version 4.7.3 operation check.
