@@ -18,7 +18,7 @@ new Frequently_Searched_Words();
  * Frequently Searched Words Basic Class
  *
  * @author  Kazuya Takami
- * @version 1.0.3
+ * @version 1.1.0
  * @since   1.0.0
  */
 class Frequently_Searched_Words {
@@ -34,15 +34,15 @@ class Frequently_Searched_Words {
 	/**
 	 * Variable definition: plugin version
 	 *
-	 * @version 1.0.3
+	 * @version 1.1.0
 	 * @since   1.0.0
 	 */
-	private $version = '1.0.3';
+	private $version = '1.1.0';
 
 	/**
 	 * Constructor Define.
 	 *
-	 * @version 1.0.0
+	 * @version 1.1.0
 	 * @since   1.0.0
 	 */
 	public function __construct () {
@@ -54,6 +54,7 @@ class Frequently_Searched_Words {
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		} else {
+			add_action( 'wp_head',       array( $this, 'wp_head' ) );
 			add_action( 'pre_get_posts', array( $this, 'search_post_update' ) );
 		}
 	}
@@ -139,6 +140,16 @@ class Frequently_Searched_Words {
 	public function list_page_render () {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-frequently-searched-words-admin-list.php' );
 		new Frequently_Searched_Words_List( $this->text_domain );
+	}
+
+	/**
+	 * Enqueue Script.
+	 *
+	 * @version 1.1.0
+	 * @since   1.0.0
+	 */
+	public function wp_head () {
+		wp_enqueue_script( 'wp-frequently-searched-word-autocomplete-js' , plugins_url( 'js/autocomplete.js', __FILE__ ), array('jquery'), $this->version );
 	}
 
 	/**
