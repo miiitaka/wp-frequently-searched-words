@@ -18,7 +18,7 @@ new Frequently_Searched_Words();
  * Frequently Searched Words Basic Class
  *
  * @author  Kazuya Takami
- * @version 1.0.3
+ * @version 1.0.6
  * @since   1.0.0
  */
 class Frequently_Searched_Words {
@@ -53,6 +53,7 @@ class Frequently_Searched_Words {
 		if ( is_admin() ) {
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
 		} else {
 			add_action( 'pre_get_posts', array( $this, 'search_post_update' ) );
 		}
@@ -119,6 +120,21 @@ class Frequently_Searched_Words {
 			'dashicons-search'
 		);
 		add_action( 'admin_print_styles-' . $list_page, array( $this, 'add_style' ) );
+	}
+
+	/**
+	 * Add Menu to the Admin Screen.
+	 *
+	 * @version 1.0.6
+	 * @since   1.0.6
+	 * @param   array  $links
+	 * @return  array  $links
+	 */
+	public function plugin_action_links( $links ) {
+		$url = admin_url( 'admin.php?page=' . $this->text_domain . '/' . $this->text_domain . '.php' );
+		$url = '<a href="' . esc_url( $url ) . '">' . __( 'Settings' ) . '</a>';
+		array_unshift( $links, $url );
+		return $links;
 	}
 
 	/**
