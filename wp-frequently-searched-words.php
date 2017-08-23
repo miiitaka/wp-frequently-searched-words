@@ -3,7 +3,7 @@
 Plugin Name: Frequently Searched Words
 Plugin URI: https://github.com/miiitaka/wp-frequently-searched-words
 Description: It is possible to register and display frequently searched words in site search.
-Version: 1.0.5
+Version: 1.0.6
 Author: Kazuya Takami
 Author URI: https://www.terakoya.work/
 License: GPLv2 or later
