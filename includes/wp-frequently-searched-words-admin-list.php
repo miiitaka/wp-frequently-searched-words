@@ -42,7 +42,7 @@ class Frequently_Searched_Words_List {
 	/**
 	 * Settings Page HTML Render.
 	 *
-	 * @version 1.0.0
+	 * @version 1.1.0
 	 * @since   1.0.0
 	 * @param   Frequently_Searched_Words_Admin_Db $db
 	 * @param   String $mode
@@ -52,7 +52,7 @@ class Frequently_Searched_Words_List {
 
 		$html  = '';
 		$html .= '<div class="wrap">';
-		$html .= '<h1>' . esc_html__( 'Frequently Searched Words List', $this->text_domain ) . '</h1>';
+		$html .= '<h1>' . __( 'Frequently Searched Words List', $this->text_domain ) . '</h1>';
 		echo $html;
 
 		if ( $mode === "delete" ) {
@@ -60,6 +60,14 @@ class Frequently_Searched_Words_List {
 		}
 
 		$html  = '<hr>';
+		$html .= __( 'ShortCode', $this->text_domain ) . ' : ';
+		$html .= '<input type="text" onfocus="this.select();" readonly="readonly" value="[wp-frequently-searched-words]" class="regular-text code">';
+		$html .= '<p>' . __( 'ShortCode Params', $this->text_domain ) . ' : </p>';
+		$html .= '<ul>';
+		$html .= '<li>- id : e.g) id="example"</li>';
+		$html .= '<li>- class : e.g) class="example"</li>';
+		$html .= '<li>- limit : e.g) limit="5" (default: 10)</li>';
+		$html .= '</ul>';
 		$html .= '<table class="wp-list-table widefat fixed striped posts fsw-list-table">';
 		$html .= '<tr>';
 		$html .= '<th scope="row">&nbsp;</th>';
