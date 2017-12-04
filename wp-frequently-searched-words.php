@@ -3,7 +3,7 @@
 Plugin Name: Frequently Searched Words
 Plugin URI: https://github.com/miiitaka/wp-frequently-searched-words
 Description: It is possible to register and display frequently searched words in site search.
-Version: 1.0.8
+Version: 1.1.0
 Author: Kazuya Takami
 Author URI: https://www.terakoya.work/
 License: GPLv2 or later
@@ -18,7 +18,7 @@ new Frequently_Searched_Words();
  * Frequently Searched Words Basic Class
  *
  * @author  Kazuya Takami
- * @version 1.0.8
+ * @version 1.1.0
  * @since   1.0.0
  */
 class Frequently_Searched_Words {
@@ -160,7 +160,7 @@ class Frequently_Searched_Words {
 	/**
 	 * Search Post Update.
 	 *
-	 * @version 1.0.3
+	 * @version 1.1.0
 	 * @since   1.0.0
 	 * @param   WP_Query $query
 	 */
@@ -176,10 +176,10 @@ class Frequently_Searched_Words {
 					$args = explode( " ", $search_word );
 
 					foreach ( $args as $value ) {
-						$result = $db->get_options( $value );
+						$result = $db->get_options( urldecode( $value ) );
 
 						if ( empty( $result ) ) {
-							$db->insert_options( $value );
+							$db->insert_options( urldecode( $value ) );
 						} else {
 							$db->update_options( $result );
 						}
