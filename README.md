@@ -25,6 +25,12 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 ## Changelog
 
+### 1.1.2 (2018-06-18)
+- Checked : WordPress version 4.9.6 operation check.
+- Checked : WordPress version 4.9.5 operation check.
+- Checked : WordPress version 4.9.4 operation check.
+- Checked : WordPress version 4.9.3 operation check.
+
 ### 1.1.1 (2018-01-24)
 - Checked : WordPress version 4.9.2 operation check.
 
