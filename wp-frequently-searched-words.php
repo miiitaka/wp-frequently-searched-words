@@ -75,12 +75,12 @@ class Frequently_Searched_Words {
 	 *
 	 * @version 1.0.0
 	 * @since   1.0.0
-	 * @param   string $args short code params
+	 * @param   array  $args short code params
 	 * @return  string
 	 */
 	public function short_code_init ( $args ) {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-frequently-search-words-admin-short-code.php' );
-		$obj = new Frequently_Searched_Words_ShortCode( $args );
+		$obj = new Frequently_Searched_Words_ShortCode();
 		return $obj->short_code_display( $args );
 	}
 
