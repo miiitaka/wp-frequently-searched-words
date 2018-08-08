@@ -2,8 +2,8 @@
 Contributors: miiitaka
 Tags: search, shortcode
 Requires at least: 4.7.2
-Tested up to: 4.9.6
-Stable tag: 1.1.2
+Tested up to: 4.9.8
+Stable tag: 2.0.0
 
 It is possible to register and display frequently searched words in site search.
 
