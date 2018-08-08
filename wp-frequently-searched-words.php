@@ -18,7 +18,7 @@ new Frequently_Searched_Words();
  * Frequently Searched Words Basic Class
  *
  * @author  Kazuya Takami
- * @version 1.1.2
+ * @version 2.0.0
  * @since   1.0.0
  */
 class Frequently_Searched_Words {
@@ -42,7 +42,7 @@ class Frequently_Searched_Words {
 	/**
 	 * Constructor Define.
 	 *
-	 * @version 1.0.0
+	 * @version 2.0.0
 	 * @since   1.0.0
 	 */
 	public function __construct () {
@@ -55,7 +55,7 @@ class Frequently_Searched_Words {
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
 		} else {
-			add_action( 'pre_get_posts', array( $this, 'search_post_update' ) );
+			add_action( 'wp_footer', array( $this, 'search_post_update' ) );
 		}
 	}
 
@@ -160,32 +160,32 @@ class Frequently_Searched_Words {
 	/**
 	 * Search Post Update.
 	 *
-	 * @version 1.1.0
+	 * @version 2.0.0
 	 * @since   1.0.0
-	 * @param   WP_Query $query
 	 */
-	public function search_post_update ( $query ) {
-		if ( $query->is_main_query() ) {
-			if ( $query->is_search ) {
-				$search_word = mb_convert_kana( get_search_query(), "as", "UTF-8" );
-				$search_word = trim( $search_word );
+	public function search_post_update () {
+		if ( is_search() ) {
+			$search_word = mb_convert_kana( get_search_query(), "as", "UTF-8" );
+			$search_word = esc_html( trim( $search_word ) );
 
-				if ( !empty( $search_word ) ) {
-					$db = new Frequently_Searched_Words_Admin_Db();
+			$paged = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
 
-					$args = explode( " ", $search_word );
+			if ( have_posts() && !empty( $search_word ) && $paged === 1 ) {
+				$db = new Frequently_Searched_Words_Admin_Db();
 
-					foreach ( $args as $value ) {
-						$result = $db->get_options( urldecode( $value ) );
+				$args = explode( " ", $search_word );
 
-						if ( empty( $result ) ) {
-							$db->insert_options( urldecode( $value ) );
-						} else {
-							$db->update_options( $result );
-						}
+				foreach ( $args as $value ) {
+					$result = $db->get_options( urldecode( $value ) );
+
+					if ( empty( $result ) ) {
+						$db->insert_options( urldecode( $value ) );
+					} else {
+						$db->update_options( $result );
 					}
 				}
 			}
+			wp_reset_query();
 		}
 	}
 }
