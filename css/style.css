@@ -1,25 +1,35 @@
 .fsw-list-table tr th:nth-child(1) {
-	width: 50px;
+	width: 30px;
 }
 
 .fsw-list-table tr th:nth-child(2) {
-	width: 200px;
+	width: 3em;
 }
 
-.fsw-list-table tr th:nth-child(3) {
-	width: 90px;
-}
-
-.fsw-list-table tr td:nth-child(3) {
+.fsw-list-table tr td:nth-child(2) {
 	text-align: right;
 }
 
+.fsw-list-table tr th:nth-child(3) {
+	width: 200px;
+}
+
+.fsw-list-table tr th:nth-child(4) {
+	width: 90px;
+}
+
 .fsw-list-table tr td:nth-child(4) {
+	text-align: right;
+}
+
+.fsw-list-table tr td:nth-child(5) {
 	display: block;
+	padding: 0;
 	position: relative;
 }
 
-.fsw-list-table tr td:nth-child(4) span {
+.fsw-list-table tr td:nth-child(5) span {
 	background: #0085ba;
 	position: absolute;
+	top: 8px;
 }

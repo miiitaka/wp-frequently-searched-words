@@ -3,7 +3,7 @@
  * Frequently Searched Words List
  *
  * @author  Kazuya Takami
- * @version 1.1.0
+ * @version 2.1.0
  * @since   1.0.0
  */
 class Frequently_Searched_Words_List {
@@ -42,7 +42,7 @@ class Frequently_Searched_Words_List {
 	/**
 	 * Settings Page HTML Render.
 	 *
-	 * @version 1.1.0
+	 * @version 2.1.0
 	 * @since   1.0.0
 	 * @param   Frequently_Searched_Words_Admin_Db $db
 	 * @param   String $mode
@@ -71,6 +71,7 @@ class Frequently_Searched_Words_List {
 		$html .= '<table class="wp-list-table widefat fixed striped posts fsw-list-table">';
 		$html .= '<tr>';
 		$html .= '<th scope="row">&nbsp;</th>';
+		$html .= '<th scope="row">No.</th>';
 		$html .= '<th scope="row">' . esc_html__( 'Search Word',  $this->text_domain ) . '</th>';
 		$html .= '<th scope="row">' . esc_html__( 'Search Count', $this->text_domain ) . '</th>';
 		$html .= '<th scope="row">&nbsp;</th>';
@@ -82,12 +83,14 @@ class Frequently_Searched_Words_List {
 
 		if ( $results ) {
 			$count_array = $db->get_search_count_sum();
+			$count = 1;
 			foreach ( $results as $row ) {
 				$html  = '';
 				$html .= '<tr>';
 				$html .= '<td>';
 				$html .= '<a href="' . $self_url . '&mode=delete&frequently_searched_words_id=' . esc_html( $row->id ) . '">';
 				$html .= esc_html__( 'Delete', $this->text_domain );
+				$html .= '<td>' . $count++ . '</td>';
 				$html .= '</a>';
 				$html .= '</td>';
 				$html .= '<td>' . esc_html( $row->search_word )  . '</td>';
@@ -104,7 +107,7 @@ class Frequently_Searched_Words_List {
 				echo $html;
 			}
 		} else {
-			echo '<td colspan="4">' . esc_html__( 'Without registration.', $this->text_domain ) . '</td>';
+			echo '<td colspan="5">' . esc_html__( 'Without registration.', $this->text_domain ) . '</td>';
 		}
 
 		$html  = '</table>';
