@@ -41,6 +41,9 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 == Changelog ==
 
+= 2.1.0 (2019-01-09) =
+* Updated : Added line number.
+
 = 2.0.0 (2018-08-08) =
 * Updated : If there are zero search results, do not register keywords.
 * Checked : WordPress version 4.9.8 operation check.
