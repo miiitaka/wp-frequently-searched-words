@@ -25,10 +25,16 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 ## Changelog
 
+### 2.1.0 (2019-01-09)
+- Updated : Added line number.
+- Check : WordPress version 5.0.2 operation check.
+- Check : WordPress version 5.0.1 operation check.
+- Check : WordPress version 5.0.0 operation check.
+
 ### 2.0.0 (2018-08-08)
-* Updated : If there are zero search results, do not register keywords.
-* Checked : WordPress version 4.9.8 operation check.
-* Checked : WordPress version 4.9.7 operation check.
+- Updated : If there are zero search results, do not register keywords.
+- Checked : WordPress version 4.9.8 operation check.
+- Checked : WordPress version 4.9.7 operation check.
 
 ### 1.1.2 (2018-06-18)
 - Checked : WordPress version 4.9.6 operation check.
