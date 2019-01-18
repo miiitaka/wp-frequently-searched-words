@@ -25,6 +25,9 @@ if ( shortcode_exists( 'wp-frequently-searched-words' ) ) {
 
 ## Changelog
 
+### 2.1.1 (2019-01-18)
+- Check : WordPress version 5.0.3 operation check.
+
 ### 2.1.0 (2019-01-09)
 - Updated : Added line number.
 - Check : WordPress version 5.0.2 operation check.
